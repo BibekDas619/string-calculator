@@ -14,6 +14,9 @@ export const StringCalculator = (numberString: string): number => {
     numbers = numbers.substring(newDelimiterEndIndex + 1);
   }
 
+  // Replace new line with delimiter
+  numbers = numbers.replace(/\n/g, delimiter);
+
   // Split the string by the delimiter and convert to numbers
   let numbersArray: number[] = numbers
     .split(delimiter)
