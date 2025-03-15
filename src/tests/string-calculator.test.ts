@@ -36,6 +36,13 @@ describe("String Calculator", () => {
       expect(StringCalculator("//.\n1.2.3.4")).toBe(10);
     });
 
+    // Test case for delimiter of any length
+    it("should support delimiter of any length", () => {
+      expect(StringCalculator("//***\n1***2***3")).toBe(6);
+      expect(StringCalculator("//##\n1##2##3")).toBe(6);
+      expect(StringCalculator("//....\n1....2....3")).toBe(6);
+    });
+
     // Test case for new line in between numbers
     it("should handle new line between numbers", () => {
       expect(StringCalculator("1\n2,3")).toBe(6);
