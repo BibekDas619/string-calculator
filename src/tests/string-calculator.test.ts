@@ -20,4 +20,13 @@ describe("String Calculator", () => {
       expect(StringCalculator("10,20")).toBe(30);
     });
   });
+
+  describe("Advanced functionalities", () => {
+    // Test case for arbitrary number of comma separated numbers
+    it("should return the sum of all the comma-separated numbers", () => {
+      expect(StringCalculator("1,2,3,4,5")).toBe(15);
+      expect(StringCalculator("10,20,30,40,2,9,15")).toBe(126);
+      expect(StringCalculator("10,20,30")).toBe(60);
+    });
+  });
 });
