@@ -31,9 +31,12 @@ export const StringCalculator = (numberString: string): number => {
     );
   }
 
-  return numbersArray.reduce(
-    (previousValue: number, currentValue: number) =>
-      previousValue + currentValue,
-    0
-  );
+  // Filter numbers less than or equals to 1000
+  return numbersArray
+    .filter((num: number) => num <= 1000)
+    .reduce(
+      (previousValue: number, currentValue: number) =>
+        previousValue + currentValue,
+      0
+    );
 };
