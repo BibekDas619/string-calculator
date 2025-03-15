@@ -4,10 +4,16 @@ export const StringCalculator = (numberString: string): number => {
     return 0;
   }
 
-  // If string with single value then it will return the number value
-  if (numberString.length === 1) {
-    return Number(numberString);
-  }
+  let delimiter = ",";
 
-  return 0;
+  // Split the string by the delimiter and convert to numbers
+  let numbersArray: number[] = numberString
+    .split(delimiter)
+    .map((number: string) => parseInt(number, 10));
+
+  return numbersArray.reduce(
+    (previousValue: number, currentValue: number) =>
+      previousValue + currentValue,
+    0
+  );
 };
