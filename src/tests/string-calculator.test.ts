@@ -42,5 +42,21 @@ describe("String Calculator", () => {
       expect(StringCalculator("5\n10\n15")).toBe(30);
       expect(StringCalculator("1,2\n3")).toBe(6);
     });
+
+    // Test case for throwing error if negative numbers are present also all negative numbers will be present inside of that error message separated by comma
+    it("should throw an error message if negative numbers are present by including all of them inside of the error messages", () => {
+      expect(() => StringCalculator("-1,-2")).toThrowError(
+        "negative numbers not allowed -1,-2"
+      );
+      expect(() => StringCalculator("1,-2,-3,4,-5")).toThrowError(
+        "negative numbers not allowed -2,-3,-5"
+      );
+      expect(() => StringCalculator("5\n10\n-15")).toThrowError(
+        "negative numbers not allowed -15"
+      );
+      expect(() => StringCalculator("//;\n-1;-2")).toThrowError(
+        "negative numbers not allowed -1,-2"
+      );
+    });
   });
 });
