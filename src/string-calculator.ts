@@ -1,26 +1,31 @@
+const escapeRegex = (regex: string) => {
+  return regex.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+};
+
 export const StringCalculator = (numberString: string): number => {
   //Check for empty string
   if (numberString === "") {
     return 0;
   }
 
-  let delimiter = ",";
+  let delimiters = [","];
   let numbers = numberString;
 
-  // Check for custom delimiter
+  // Check for custom delimiters
   if (numbers.startsWith("//")) {
     let newDelimiterEndIndex = numbers.indexOf("\n");
-    delimiter = numbers.substring(2, newDelimiterEndIndex);
+    delimiters[0] = numbers.substring(2, newDelimiterEndIndex);
     numbers = numbers.substring(newDelimiterEndIndex + 1);
   }
 
-  // Replace new line with delimiter
-  numbers = numbers.replace(/\n/g, delimiter);
+  // Replace new line with delimiters
+  numbers = numbers.replace(/\n/g, delimiters[0]);
 
-  // Split the string by the delimiter and convert to numbers
+  // Split the string by the delimiters and convert to numbers
   let numbersArray: number[] = numbers
-    .split(delimiter)
-    .map((number: string) => parseInt(number, 10));
+    .split(new RegExp(`[${escapeRegex(delimiters[0])}]`))
+    .map((number: string) => parseInt(number, 10))
+    .filter((num) => !isNaN(num));
 
   // Check for negative numbers
   let negativeNumbersFiltered = numbersArray.filter((num: number) => num < 0);
