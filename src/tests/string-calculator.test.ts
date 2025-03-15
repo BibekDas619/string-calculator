@@ -72,5 +72,12 @@ describe("String Calculator", () => {
       expect(StringCalculator("//|\n1000|1001")).toBe(1000);
       expect(StringCalculator("1,2\n1001,3")).toBe(6);
     });
+
+    // Test case to allow multiple different delimiters
+    it("should handle multiple delimiters with special regex characters", () => {
+      expect(StringCalculator("//.+\n1.2+3")).toBe(6);
+      expect(StringCalculator("//^|\n1^2|3")).toBe(6);
+      expect(StringCalculator("//*?\n1*2?3")).toBe(6);
+    });
   });
 });
