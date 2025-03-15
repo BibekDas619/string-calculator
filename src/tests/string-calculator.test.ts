@@ -28,5 +28,12 @@ describe("String Calculator", () => {
       expect(StringCalculator("10,20,30,40,2,9,15")).toBe(126);
       expect(StringCalculator("10,20,30")).toBe(60);
     });
+
+    // Test case for custom delimiter
+    it("should support custom delimiter", () => {
+      expect(StringCalculator("//;\n1;2")).toBe(3);
+      expect(StringCalculator("//|\n1|2|3")).toBe(6);
+      expect(StringCalculator("//.\n1.2.3.4")).toBe(10);
+    });
   });
 });
