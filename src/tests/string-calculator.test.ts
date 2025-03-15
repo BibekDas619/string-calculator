@@ -79,5 +79,12 @@ describe("String Calculator", () => {
       expect(StringCalculator("//^|\n1^2|3")).toBe(6);
       expect(StringCalculator("//*?\n1*2?3")).toBe(6);
     });
+
+    // Test cases to allow multiple different delimiters with varying length
+    it("should handle multiple delimiters with varying lengths", () => {
+      expect(StringCalculator("//**%%\n1**2%%3")).toBe(6);
+      expect(StringCalculator("//abcxyz\n1abc2xyz3")).toBe(6);
+      expect(StringCalculator("//*%%###\n1*2%%3###4")).toBe(10);
+    });
   });
 });
