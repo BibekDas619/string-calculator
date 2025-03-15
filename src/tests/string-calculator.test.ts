@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { StringCalculator } from "./string-calculator";
+import { StringCalculator } from "../string-calculator";
 
 describe("String Calculator", () => {
   // Test case for empty string
